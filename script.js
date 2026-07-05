@@ -1,27 +1,36 @@
 /* ==========================================================================
-   ARU – অরু  |  script.js
-   Enhanced interactivity:
-   1. Page loader with graceful hide
-   2. Scroll reveal with stagger support
-   3. Sticky glassmorphism navigation
-   4. Live countdown timer
-   5. Scroll progress indicator
-   6. Notify Me form with visual feedback
-   7. Mouse parallax on hero decorative elements
-   8. Mobile navigation toggle
+   ARU – অরু  |  script.js (Premium Luxury)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ---------- 1. Page loader ---------- */
-  var loader = document.getElementById('loader');
-  if (loader) {
-    window.setTimeout(function () {
-      loader.classList.add('is-hidden');
-    }, 800);
+  /* ---------- 1. Custom Cursor ---------- */
+  var cursor = document.getElementById('customCursor');
+  var follower = document.getElementById('customCursorFollower');
+  var isHovering = false;
+
+  if (cursor && follower) {
+    document.addEventListener('mousemove', function(e) {
+      // Follower follows with slight delay
+      follower.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+      // Cursor follows instantly
+      cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+    });
+
+    var interactables = document.querySelectorAll('a, button, input');
+    interactables.forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        cursor.classList.add('hover');
+        follower.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', function() {
+        cursor.classList.remove('hover');
+        follower.classList.remove('hover');
+      });
+    });
   }
 
-  /* ---------- 2. Scroll reveal ---------- */
+  /* ---------- 2. Cinematic Scroll Reveal ---------- */
   var revealTargets = document.querySelectorAll('[data-reveal]');
 
   if ('IntersectionObserver' in window && revealTargets.length) {
@@ -29,44 +38,47 @@ document.addEventListener('DOMContentLoaded', function () {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          // Don't unobserve if you want it to fade in every time it scrolls into view,
+          // but for a luxury feel, usually fading in once is better.
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
     revealTargets.forEach(function (el) { observer.observe(el); });
   } else {
     revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- 3. Sticky navigation ---------- */
-  var nav = document.querySelector('.site-nav');
-  var hero = document.getElementById('hero');
+  /* ---------- 3. Fullscreen Menu Toggle ---------- */
+  var menuToggle = document.getElementById('menuToggle');
+  var luxuryNav = document.getElementById('luxuryNav');
+  var navLinks = document.querySelectorAll('.luxury-nav__links a');
 
-  if (nav && hero) {
-    var lastScrollY = 0;
-    var heroBottom = 0;
-
-    function updateNav() {
-      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      heroBottom = hero.offsetTop + hero.offsetHeight * 0.4;
-
-      if (scrollY > heroBottom) {
-        nav.classList.add('is-visible');
-        nav.classList.add('is-scrolled');
+  if (menuToggle && luxuryNav) {
+    menuToggle.addEventListener('click', function () {
+      var isOpen = luxuryNav.classList.contains('is-open');
+      if (isOpen) {
+        luxuryNav.classList.remove('is-open');
+        menuToggle.querySelector('.menu-text').textContent = 'Menu';
+        document.body.style.overflow = '';
       } else {
-        nav.classList.remove('is-visible');
-        nav.classList.remove('is-scrolled');
+        luxuryNav.classList.add('is-open');
+        menuToggle.querySelector('.menu-text').textContent = 'Close';
+        document.body.style.overflow = 'hidden';
       }
+    });
 
-      lastScrollY = scrollY;
-    }
-
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        luxuryNav.classList.remove('is-open');
+        menuToggle.querySelector('.menu-text').textContent = 'Menu';
+        document.body.style.overflow = '';
+      });
+    });
   }
 
-  /* ---------- 4. Live countdown ---------- */
+  /* ---------- 4. Live Countdown ---------- */
   var launchDate = new Date();
   launchDate.setDate(launchDate.getDate() + 30);
   launchDate.setHours(0, 0, 0, 0);
@@ -96,21 +108,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-    function updateUnit(el, value) {
-      if (!el) return;
-      var padded = pad(value);
-      if (el.textContent !== padded) {
-        el.textContent = padded;
-        el.classList.remove('tick');
-        void el.offsetWidth;
-        el.classList.add('tick');
-      }
-    }
-
-    updateUnit(countdownEls.days, days);
-    updateUnit(countdownEls.hours, hours);
-    updateUnit(countdownEls.minutes, minutes);
-    updateUnit(countdownEls.seconds, seconds);
+    if (countdownEls.days) countdownEls.days.textContent = pad(days);
+    if (countdownEls.hours) countdownEls.hours.textContent = pad(hours);
+    if (countdownEls.minutes) countdownEls.minutes.textContent = pad(minutes);
+    if (countdownEls.seconds) countdownEls.seconds.textContent = pad(seconds);
   }
 
   if (countdownEls.days) {
@@ -118,19 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateCountdown, 1000);
   }
 
-  /* ---------- 5. Scroll progress ---------- */
-  var progressBar = document.querySelector('.scroll-progress');
-
-  if (progressBar) {
-    window.addEventListener('scroll', function () {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + '%';
-    }, { passive: true });
-  }
-
-  /* ---------- 6. Notify Me form ---------- */
+  /* ---------- 5. Waitlist Form ---------- */
   var notifyForm = document.getElementById('notifyForm');
   var notifyNote = document.getElementById('notifyNote');
 
@@ -141,65 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var email = emailInput ? emailInput.value.trim() : '';
 
       if (!email) {
-        notifyNote.textContent = 'Please enter a valid email address.';
-        notifyNote.classList.remove('success');
+        notifyNote.textContent = 'Please provide a valid email.';
         return;
       }
 
-      notifyNote.textContent = "\u2713 Thank you! We'll let you know as soon as we launch.";
-      notifyNote.classList.add('success');
+      notifyNote.textContent = 'Welcome to the waitlist.';
       notifyForm.reset();
     });
   }
-
-  /* ---------- 7. Mouse parallax on hero ---------- */
-  var heroContent = document.querySelector('.hero__content');
-  var heroDecor = document.querySelector('.hero__decor');
-
-  if (heroContent && heroDecor && window.matchMedia('(min-width: 768px)').matches) {
-    document.addEventListener('mousemove', function (e) {
-      var x = (e.clientX / window.innerWidth - 0.5) * 2;
-      var y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-      requestAnimationFrame(function () {
-        heroDecor.style.transform = 'translate(' + (x * 8) + 'px, ' + (y * 6) + 'px)';
-      });
-    });
-  }
-
-  /* ---------- 8. Mobile navigation ---------- */
-  var navToggle = document.querySelector('.site-nav__toggle');
-  var navLinks = document.querySelector('.site-nav__links');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      navToggle.classList.toggle('is-active');
-      navLinks.classList.toggle('is-open');
-      document.body.style.overflow = navLinks.classList.contains('is-open') ? 'hidden' : '';
-    });
-
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navToggle.classList.remove('is-active');
-        navLinks.classList.remove('is-open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  /* ---------- 9. Smooth scroll for anchor links ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      var target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        var navHeight = nav ? nav.offsetHeight : 0;
-        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    });
-  });
-
 });
