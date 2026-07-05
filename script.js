@@ -32,29 +32,67 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- 1. Sticky Navigation ---------- */
-  var nav = document.getElementById('siteNav');
-  if (nav) {
+  /* ---------- 1. Fallback Nav Listener ---------- */
+  var navFallback = document.getElementById('siteNav');
+  if (navFallback && typeof Lenis === 'undefined') {
     window.addEventListener('scroll', function() {
       if (window.scrollY > 50) {
-        nav.classList.add('is-scrolled');
+        navFallback.classList.add('is-scrolled');
       } else {
-        nav.classList.remove('is-scrolled');
+        navFallback.classList.remove('is-scrolled');
       }
     }, { passive: true });
   }
 
-  /* ---------- 2. Gentle Parallax ---------- */
-  var parallaxElements = document.querySelectorAll('[data-speed]');
-  if (parallaxElements.length) {
-    window.addEventListener('scroll', function() {
-      var scrolled = window.pageYOffset;
+  /* ---------- 2. Smooth Scroll (Lenis) & Parallax ---------- */
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smooth: true
+    });
+    
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    
+    var parallaxElements = document.querySelectorAll('[data-speed]');
+    var nav = document.getElementById('siteNav');
+
+    lenis.on('scroll', function(e) {
+      var scrolled = e.scroll;
+      
+      /* Sync Parallax */
       parallaxElements.forEach(function(el) {
         var speed = parseFloat(el.getAttribute('data-speed'));
         var yPos = -(scrolled * speed);
         el.style.transform = 'translateY(' + yPos + 'px)';
       });
-    }, { passive: true });
+
+      /* Sync Sticky Nav */
+      if (nav) {
+        if (scrolled > 50) {
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.classList.remove('is-scrolled');
+        }
+      }
+    });
+  } else {
+    /* Fallback Parallax */
+    var parallaxElements = document.querySelectorAll('[data-speed]');
+    if (parallaxElements.length) {
+      window.addEventListener('scroll', function() {
+        var scrolled = window.pageYOffset;
+        parallaxElements.forEach(function(el) {
+          var speed = parseFloat(el.getAttribute('data-speed'));
+          var yPos = -(scrolled * speed);
+          el.style.transform = 'translateY(' + yPos + 'px)';
+        });
+      }, { passive: true });
+    }
   }
 
   /* ---------- 3. Soft Scroll Reveal ---------- */
