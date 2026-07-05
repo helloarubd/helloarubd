@@ -4,6 +4,34 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---------- 0. Theme Toggle ---------- */
+  var themeToggle = document.getElementById('themeToggle');
+  
+  // Check for saved theme or system preference
+  var savedTheme = localStorage.getItem('aru-theme');
+  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      
+      // If currently dark, or if no attribute but system is dark
+      if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('aru-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('aru-theme', 'dark');
+      }
+    });
+  }
+
   /* ---------- 1. Sticky Navigation ---------- */
   var nav = document.getElementById('siteNav');
   if (nav) {
