@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aru – অরু | Everyday Elegance</title>
   <meta name="description" content="Aru – অরু is a boutique jewelry and fashion accessories brand in Bangladesh. Discover elegant rings, earrings, necklaces and accessories crafted for everyday grace." />
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,275 +16,296 @@
 </head>
 <body class="pleasant-theme">
 
-  <!-- Glassmorphism Navigation -->
-  <nav class="site-nav" id="siteNav">
-    <div class="nav-inner">
-      <a href="#hero" class="brand-logo">Aru <span>অরু</span></a>
-      <ul class="nav-links">
-        <li><a href="#philosophy">Our Story</a></li>
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#style-guide">Style Guide</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <a href="#waitlist" class="btn btn-outline">Join Waitlist</a>
+<!-- Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-mark">Aru <span>অরু</span></div>
+  <div class="preloader-line"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Glassmorphism Navigation -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#hero" class="brand-logo">Aru <span>অরু</span></a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">Our Story</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#style-guide">Style Guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <a href="#waitlist" class="btn btn-outline">Join Waitlist</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-inner">
+      <li><a href="#philosophy">Our Story</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#style-guide">Style Guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#waitlist" class="btn btn-primary">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- 1. Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1" data-speed="0.2"></div>
+      <div class="shape shape-2" data-speed="-0.3"></div>
+    </div>
+
+    <!-- Floating Images for Visual Interest -->
+    <div class="hero-float hero-float-left" data-speed="0.15">
+      <div class="image-frame organic-shape-4">
+        <img src="assets/images/lookbook-necklace.jpg" alt="" />
       </div>
     </div>
-  </nav>
-
-  <main>
-    <!-- 1. Hero Section -->
-    <section class="hero" id="hero">
-      <div class="hero-bg-shapes">
-        <div class="shape shape-1" data-speed="0.2"></div>
-        <div class="shape shape-2" data-speed="-0.3"></div>
+    <div class="hero-float hero-float-right" data-speed="-0.1">
+      <div class="image-frame organic-shape-2">
+        <img src="assets/images/lookbook-rings.jpg" alt="" />
       </div>
-      
-      <!-- Floating Images for Visual Interest -->
-      <div class="hero-float hero-float-left" data-speed="0.15">
-        <div class="image-frame organic-shape-4">
-          <img src="assets/images/lookbook-necklace.jpg" alt="" />
-        </div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title" data-reveal><em>Elevate</em><br>your everyday.</h1>
+      <p class="hero-subtitle" data-reveal data-reveal-delay="1">
+        Thoughtfully crafted jewelry and accessories designed for the modern women of Bangladesh. Because elegance shouldn't be reserved for special occasions.
+      </p>
+      <div class="hero-actions" data-reveal data-reveal-delay="2">
+        <a href="#collections" class="btn btn-primary">Discover the Pieces</a>
       </div>
-      <div class="hero-float hero-float-right" data-speed="-0.1">
-        <div class="image-frame organic-shape-2">
-          <img src="assets/images/lookbook-rings.jpg" alt="" />
-        </div>
-      </div>
+    </div>
 
-      <div class="hero-content">
-        <h1 class="hero-title" data-reveal><em>Elevate</em><br>your everyday.</h1>
-        <p class="hero-subtitle" data-reveal data-reveal-delay="1">
-          Thoughtfully crafted jewelry and accessories designed for the modern women of Bangladesh. Because elegance shouldn't be reserved for special occasions.
-        </p>
-        <div class="hero-actions" data-reveal data-reveal-delay="2">
-          <a href="#collections" class="btn btn-primary">Discover the Pieces</a>
-        </div>
-      </div>
-      
-      <!-- Scroll Indicator -->
-      <div class="scroll-cue">
-        <div class="scroll-cue-line"></div>
-        <span>Scroll</span>
-      </div>
-    </section>
+    <!-- Scroll Indicator -->
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-    <!-- 2. The Philosophy / Founder's Note -->
-    <section class="philosophy" id="philosophy">
-      <div class="container">
-        <div class="philosophy-grid">
-          <div class="philosophy-image">
-            <div class="image-frame organic-shape-1">
-              <img src="assets/images/about-workspace.jpg" alt="Aru Workspace" loading="lazy" />
-            </div>
-          </div>
-          <div class="philosophy-text" data-reveal data-reveal-delay="1">
-            <span class="eyebrow">A Note from the Founder</span>
-            <h2>We believe beauty lives in the little details.</h2>
-            <p>
-              I started Aru – অরু with a simple question: why do we keep our most beautiful things locked away in a box, waiting for the "right" moment to wear them?
-            </p>
-            <p>
-              Our pieces are curated and crafted not for the vault, but for your skin. They are designed to accompany you through morning coffees, long workdays, and evening laughter. Every piece is hypoallergenic, durable, and crafted to hold its shine through the beautiful chaos of daily life.
-            </p>
-            <div class="signature">
-              <p>With love,</p>
-              <p class="sig-name">The Aru Team</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. The Collections -->
-    <section class="collections" id="collections">
-      <div class="container">
-        <div class="section-header center" data-reveal>
-          <span class="eyebrow">The Debut</span>
-          <h2>Our Collections</h2>
-        </div>
-
-        <div class="collections-grid">
-          <div class="collection-card" data-reveal>
-            <div class="card-image organic-shape-2">
-              <img src="assets/images/category-rings.jpg" alt="Rings" loading="lazy" />
-            </div>
-            <div class="card-content">
-              <h3>Rings</h3>
-              <p>From delicate bands meant to be stacked, to statement solitaires that catch the light perfectly.</p>
-            </div>
-          </div>
-
-          <div class="collection-card" data-reveal data-reveal-delay="1">
-            <div class="card-image organic-shape-3">
-              <img src="assets/images/category-earrings.jpg" alt="Earrings" loading="lazy" />
-            </div>
-            <div class="card-content">
-              <h3>Earrings</h3>
-              <p>Soft everyday studs and elegant drops that frame your face without ever feeling heavy.</p>
-            </div>
-          </div>
-
-          <div class="collection-card" data-reveal data-reveal-delay="2">
-            <div class="card-image organic-shape-4">
-              <img src="assets/images/category-necklaces.jpg" alt="Necklaces" loading="lazy" />
-            </div>
-            <div class="card-content">
-              <h3>Necklaces</h3>
-              <p>Layered chains and dainty pendants meant to be mixed, matched, and made your own.</p>
-            </div>
-          </div>
-
-          <div class="collection-card" data-reveal data-reveal-delay="3">
-            <div class="card-image organic-shape-5">
-              <img src="assets/images/category-accessories.jpg" alt="Accessories" loading="lazy" />
-            </div>
-            <div class="card-content">
-              <h3>Accessories</h3>
-              <p>Hair pins, bracelets, and the small finishing touches that quietly complete an outfit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Craftsmanship & Materials -->
-    <section class="craftsmanship">
-      <div class="container">
-        <div class="craft-grid">
-          <div class="craft-item" data-reveal>
-            <div class="craft-icon">✦</div>
-            <h4>Hypoallergenic</h4>
-            <p>Gentle on sensitive skin, so you can wear them comfortably all day.</p>
-          </div>
-          <div class="craft-item" data-reveal data-reveal-delay="1">
-            <div class="craft-icon">✧</div>
-            <h4>Premium Finish</h4>
-            <p>High-quality plating designed to resist tarnishing and keep its warm glow.</p>
-          </div>
-          <div class="craft-item" data-reveal data-reveal-delay="2">
-            <div class="craft-icon">✿</div>
-            <h4>Eco-Friendly Packaging</h4>
-            <p>Every order arrives in beautiful, reusable pouches and recyclable boxes.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Style Guide -->
-    <section class="style-guide" id="style-guide">
-      <div class="container">
-        <div class="section-header" data-reveal>
-          <span class="eyebrow">How to Wear</span>
-          <h2>The Style Guide</h2>
-          <p class="subtitle">There are no rules, but here is how we love to style our pieces.</p>
-        </div>
-
-        <div class="style-grid">
-          <div class="style-feature">
-            <div class="style-image">
-              <img src="assets/images/lookbook-necklace.jpg" alt="Layering Necklaces" loading="lazy" />
-            </div>
-            <div class="style-text" data-reveal data-reveal-delay="1">
-              <h3>The Art of Layering</h3>
-              <p>Start with a delicate choker, add a mid-length chain, and finish with a statement pendant. Mixing textures (like a snake chain with a cable chain) adds effortless depth.</p>
-            </div>
-          </div>
-          
-          <div class="style-feature reverse">
-            <div class="style-image">
-              <img src="assets/images/lookbook-rings.jpg" alt="Stacking Rings" loading="lazy" />
-            </div>
-            <div class="style-text" data-reveal data-reveal-delay="1">
-              <h3>Curated Stacks</h3>
-              <p>Balance is key. Pair a bold, chunky ring on your index finger with two ultra-thin, minimalist bands on your ring finger for a look that feels intentionally undone.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. FAQ Accordion -->
-    <section class="faq-section" id="faq">
-      <div class="container">
-        <div class="section-header center" data-reveal>
-          <span class="eyebrow">What to Expect</span>
-          <h2>Frequently Asked Questions</h2>
-        </div>
-        
-        <div class="accordion" data-reveal>
-          <div class="accordion-item">
-            <button class="accordion-header">Do you deliver outside of Dhaka?</button>
-            <div class="accordion-content">
-              <p>Yes! We offer nationwide delivery across all of Bangladesh. Delivery within Dhaka usually takes 1-2 days, while outside Dhaka takes 3-5 days.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-header">How should I care for my Aru jewelry?</button>
-            <div class="accordion-content">
-              <p>To keep your pieces glowing, avoid direct contact with perfumes, lotions, and harsh chemicals. We recommend gently wiping them with a soft cloth after wearing and storing them in the Aru pouch provided.</p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-header">Is the jewelry suitable for sensitive skin?</button>
-            <div class="accordion-content">
-              <p>Absolutely. All our pieces are crafted to be hypoallergenic, lead-free, and nickel-free, making them safe and comfortable for daily wear.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. Waitlist / Anticipation -->
-    <section class="waitlist-pleasant" id="waitlist">
-      <div class="container">
-        <div class="waitlist-box" data-reveal>
-          <h2>The Anticipation</h2>
-          <p>We are putting the final touches on our debut collection. Join the family to receive an exclusive invitation to our early launch, plus styling tips straight to your inbox.</p>
-          
-          <form class="waitlist-form" id="notifyForm">
-            <input type="email" id="notifyEmail" placeholder="Your email address" required />
-            <button type="submit" class="btn btn-primary">Join the Waitlist</button>
-          </form>
-          <div class="form-message" id="notifyNote"></div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="pleasant-footer">
+  <!-- 2. The Philosophy / Founder's Note -->
+  <section class="philosophy" id="philosophy">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h2>Aru <span>অরু</span></h2>
-          <p>Elevate your everyday.</p>
+      <div class="philosophy-grid">
+        <div class="philosophy-image">
+          <div class="image-frame organic-shape-1">
+            <img src="assets/images/about-workspace.jpg" alt="Aru Workspace" loading="lazy" />
+          </div>
         </div>
-        <div class="footer-links">
-          <h4>Explore</h4>
-          <a href="#philosophy">Our Story</a>
-          <a href="#collections">Collections</a>
-          <a href="#style-guide">Style Guide</a>
+        <div class="philosophy-text" data-reveal data-reveal-delay="1">
+          <span class="eyebrow">A Note from the Founder</span>
+          <h2>We believe beauty lives in the little details.</h2>
+          <p>
+            I started Aru – অরু with a simple question: why do we keep our most beautiful things locked away in a box, waiting for the "right" moment to wear them?
+          </p>
+          <p>
+            Our pieces are curated and crafted not for the vault, but for your skin. They are designed to accompany you through morning coffees, long workdays, and evening laughter. Every piece is hypoallergenic, durable, and crafted to hold its shine through the beautiful chaos of daily life.
+          </p>
+          <div class="signature">
+            <p>With love,</p>
+            <p class="sig-name">The Aru Team</p>
+          </div>
         </div>
-        <div class="footer-links">
-          <h4>Connect</h4>
-          <a href="https://www.instagram.com/helloaru.bd/" target="_blank">Instagram</a>
-          <a href="https://www.facebook.com/helloaru.bd/" target="_blank">Facebook</a>
-          <a href="https://wa.me/8801234567890" target="_blank">WhatsApp</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Aru Bangladesh. Crafted with care.</p>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
-  <script src="script.js"></script>
+  <!-- 3. The Collections -->
+  <section class="collections" id="collections">
+    <div class="container">
+      <div class="section-header center" data-reveal>
+        <span class="eyebrow">The Debut</span>
+        <h2>Our Collections</h2>
+      </div>
+
+      <div class="collections-grid">
+        <div class="collection-card" data-reveal>
+          <div class="card-image organic-shape-2">
+            <img src="assets/images/category-rings.jpg" alt="Rings" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h3>Rings</h3>
+            <p>From delicate bands meant to be stacked, to statement solitaires that catch the light perfectly.</p>
+          </div>
+        </div>
+
+        <div class="collection-card" data-reveal data-reveal-delay="1">
+          <div class="card-image organic-shape-3">
+            <img src="assets/images/category-earrings.jpg" alt="Earrings" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h3>Earrings</h3>
+            <p>Soft everyday studs and elegant drops that frame your face without ever feeling heavy.</p>
+          </div>
+        </div>
+
+        <div class="collection-card" data-reveal data-reveal-delay="2">
+          <div class="card-image organic-shape-4">
+            <img src="assets/images/category-necklaces.jpg" alt="Necklaces" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h3>Necklaces</h3>
+            <p>Layered chains and dainty pendants meant to be mixed, matched, and made your own.</p>
+          </div>
+        </div>
+
+        <div class="collection-card" data-reveal data-reveal-delay="3">
+          <div class="card-image organic-shape-5">
+            <img src="assets/images/category-accessories.jpg" alt="Accessories" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h3>Accessories</h3>
+            <p>Hair pins, bracelets, and the small finishing touches that quietly complete an outfit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Craftsmanship & Materials -->
+  <section class="craftsmanship">
+    <div class="container">
+      <div class="craft-grid">
+        <div class="craft-item" data-reveal>
+          <div class="craft-icon">✦</div>
+          <h4>Hypoallergenic</h4>
+          <p>Gentle on sensitive skin, so you can wear them comfortably all day.</p>
+        </div>
+        <div class="craft-item" data-reveal data-reveal-delay="1">
+          <div class="craft-icon">✧</div>
+          <h4>Premium Finish</h4>
+          <p>High-quality plating designed to resist tarnishing and keep its warm glow.</p>
+        </div>
+        <div class="craft-item" data-reveal data-reveal-delay="2">
+          <div class="craft-icon">✿</div>
+          <h4>Eco-Friendly Packaging</h4>
+          <p>Every order arrives in beautiful, reusable pouches and recyclable boxes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Style Guide -->
+  <section class="style-guide" id="style-guide">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="eyebrow">How to Wear</span>
+        <h2>The Style Guide</h2>
+        <p class="subtitle">There are no rules, but here is how we love to style our pieces.</p>
+      </div>
+
+      <div class="style-grid">
+        <div class="style-feature">
+          <div class="style-image">
+            <img src="assets/images/lookbook-necklace.jpg" alt="Layering Necklaces" loading="lazy" />
+          </div>
+          <div class="style-text" data-reveal data-reveal-delay="1">
+            <h3>The Art of Layering</h3>
+            <p>Start with a delicate choker, add a mid-length chain, and finish with a statement pendant. Mixing textures (like a snake chain with a cable chain) adds effortless depth.</p>
+          </div>
+        </div>
+
+        <div class="style-feature reverse">
+          <div class="style-image">
+            <img src="assets/images/lookbook-rings.jpg" alt="Stacking Rings" loading="lazy" />
+          </div>
+          <div class="style-text" data-reveal data-reveal-delay="1">
+            <h3>Curated Stacks</h3>
+            <p>Balance is key. Pair a bold, chunky ring on your index finger with two ultra-thin, minimalist bands on your ring finger for a look that feels intentionally undone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FAQ Accordion -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header center" data-reveal>
+        <span class="eyebrow">What to Expect</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion" data-reveal>
+        <div class="accordion-item">
+          <button class="accordion-header">Do you deliver outside of Dhaka?</button>
+          <div class="accordion-content">
+            <p>Yes! We offer nationwide delivery across all of Bangladesh. Delivery within Dhaka usually takes 1-2 days, while outside Dhaka takes 3-5 days.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">How should I care for my Aru jewelry?</button>
+          <div class="accordion-content">
+            <p>To keep your pieces glowing, avoid direct contact with perfumes, lotions, and harsh chemicals. We recommend gently wiping them with a soft cloth after wearing and storing them in the Aru pouch provided.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Is the jewelry suitable for sensitive skin?</button>
+          <div class="accordion-content">
+            <p>Absolutely. All our pieces are crafted to be hypoallergenic, lead-free, and nickel-free, making them safe and comfortable for daily wear.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Waitlist / Anticipation -->
+  <section class="waitlist-pleasant" id="waitlist">
+    <div class="container">
+      <div class="waitlist-box" data-reveal>
+        <h2>The Anticipation</h2>
+        <p>We are putting the final touches on our debut collection. Join the family to receive an exclusive invitation to our early launch, plus styling tips straight to your inbox.</p>
+
+        <form class="waitlist-form" id="notifyForm">
+          <input type="email" id="notifyEmail" placeholder="Your email address" required />
+          <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+        </form>
+        <div class="form-message" id="notifyNote"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="pleasant-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>Aru <span>অরু</span></h2>
+        <p>Elevate your everyday.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="#philosophy">Our Story</a>
+        <a href="#collections">Collections</a>
+        <a href="#style-guide">Style Guide</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="https://www.instagram.com/helloaru.bd/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/helloaru.bd/" target="_blank">Facebook</a>
+        <a href="https://wa.me/8801234567890" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Aru Bangladesh. Crafted with care.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

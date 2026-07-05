@@ -4,13 +4,41 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ---------- -1. Preloader ---------- */
+  var preloader = document.getElementById('preloader');
+  if (preloader) {
+    var hidePreloader = function () {
+      preloader.classList.add('is-hidden');
+    };
+    // Hide once everything (fonts/images) has loaded, with a small minimum
+    // dwell time so the mark doesn't just flash on fast connections.
+    var minTimer = setTimeout(function () {
+      if (document.readyState === 'complete') hidePreloader();
+    }, 900);
+    window.addEventListener('load', function () {
+      clearTimeout(minTimer);
+      setTimeout(hidePreloader, 500);
+    });
+  }
+
+  /* ---------- -0.5. Scroll Progress Bar ---------- */
+  var scrollProgress = document.getElementById('scrollProgress');
+  function updateScrollProgress() {
+    if (!scrollProgress) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  }
+  updateScrollProgress();
+
   /* ---------- 0. Theme Toggle ---------- */
   var themeToggle = document.getElementById('themeToggle');
-  
+
   // Check for saved theme or system preference
   var savedTheme = localStorage.getItem('aru-theme');
   var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
+
   if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
     document.documentElement.setAttribute('data-theme', 'dark');
   } else if (savedTheme === 'light') {
@@ -20,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {
       var currentTheme = document.documentElement.getAttribute('data-theme');
-      
+
       // If currently dark, or if no attribute but system is dark
       if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
         document.documentElement.setAttribute('data-theme', 'light');
@@ -41,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         navFallback.classList.remove('is-scrolled');
       }
+      updateScrollProgress();
     }, { passive: true });
   }
 
@@ -51,19 +80,19 @@ document.addEventListener('DOMContentLoaded', function () {
       easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
       smooth: true
     });
-    
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-    
+
     var parallaxElements = document.querySelectorAll('[data-speed]');
     var nav = document.getElementById('siteNav');
 
     lenis.on('scroll', function(e) {
       var scrolled = e.scroll;
-      
+
       /* Sync Parallax */
       parallaxElements.forEach(function(el) {
         var speed = parseFloat(el.getAttribute('data-speed'));
@@ -79,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function () {
           nav.classList.remove('is-scrolled');
         }
       }
+
+      updateScrollProgress();
     });
   } else {
     /* Fallback Parallax */
@@ -91,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var yPos = -(scrolled * speed);
           el.style.transform = 'translateY(' + yPos + 'px)';
         });
+        updateScrollProgress();
       }, { passive: true });
     }
   }
@@ -112,13 +144,49 @@ document.addEventListener('DOMContentLoaded', function () {
     revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  /* ---------- 3b. Image Unveil (curtain-wipe) ---------- */
+  var imageRevealTargets = document.querySelectorAll('.image-frame, .card-image, .style-image');
+  if ('IntersectionObserver' in window && imageRevealTargets.length) {
+    var imgObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          imgObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    imageRevealTargets.forEach(function (el) { imgObserver.observe(el); });
+  } else {
+    imageRevealTargets.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- 3c. Mobile Menu ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = mobileMenu.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   /* ---------- 4. FAQ Accordion ---------- */
   var accordions = document.querySelectorAll('.accordion-item');
   accordions.forEach(function(acc) {
     var header = acc.querySelector('.accordion-header');
     header.addEventListener('click', function() {
       var isActive = acc.classList.contains('is-active');
-      
+
       // Close all others
       accordions.forEach(function(other) {
         other.classList.remove('is-active');
