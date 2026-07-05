@@ -1,29 +1,102 @@
 /* ==========================================================================
-   ARU – অরু  |  script.js
-   Enhanced interactivity:
-   1. Page loader with graceful hide
-   2. Scroll reveal with stagger support
-   3. Sticky glassmorphism navigation
-   4. Live countdown timer
-   5. Scroll progress indicator
-   6. Notify Me form with visual feedback
-   7. Mouse parallax on hero decorative elements
-   8. Mobile navigation toggle
+   ARU – অরু  |  script.js (Pleasant & Story-Driven)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* ---------- 1. Page loader ---------- */
-  var loader = document.getElementById('loader');
-  if (loader) {
-    window.setTimeout(function () {
-      loader.classList.add('is-hidden');
-    }, 800);
+  /* ---------- 0. Theme Toggle ---------- */
+  var themeToggle = document.getElementById('themeToggle');
+  
+  // Check for saved theme or system preference
+  var savedTheme = localStorage.getItem('aru-theme');
+  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 
-  /* ---------- 2. Scroll reveal ---------- */
-  var revealTargets = document.querySelectorAll('[data-reveal]');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      
+      // If currently dark, or if no attribute but system is dark
+      if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('aru-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('aru-theme', 'dark');
+      }
+    });
+  }
 
+  /* ---------- 1. Fallback Nav Listener ---------- */
+  var navFallback = document.getElementById('siteNav');
+  if (navFallback && typeof Lenis === 'undefined') {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navFallback.classList.add('is-scrolled');
+      } else {
+        navFallback.classList.remove('is-scrolled');
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- 2. Smooth Scroll (Lenis) & Parallax ---------- */
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smooth: true
+    });
+    
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    
+    var parallaxElements = document.querySelectorAll('[data-speed]');
+    var nav = document.getElementById('siteNav');
+
+    lenis.on('scroll', function(e) {
+      var scrolled = e.scroll;
+      
+      /* Sync Parallax */
+      parallaxElements.forEach(function(el) {
+        var speed = parseFloat(el.getAttribute('data-speed'));
+        var yPos = -(scrolled * speed);
+        el.style.transform = 'translateY(' + yPos + 'px)';
+      });
+
+      /* Sync Sticky Nav */
+      if (nav) {
+        if (scrolled > 50) {
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.classList.remove('is-scrolled');
+        }
+      }
+    });
+  } else {
+    /* Fallback Parallax */
+    var parallaxElements = document.querySelectorAll('[data-speed]');
+    if (parallaxElements.length) {
+      window.addEventListener('scroll', function() {
+        var scrolled = window.pageYOffset;
+        parallaxElements.forEach(function(el) {
+          var speed = parseFloat(el.getAttribute('data-speed'));
+          var yPos = -(scrolled * speed);
+          el.style.transform = 'translateY(' + yPos + 'px)';
+        });
+      }, { passive: true });
+    }
+  }
+
+  /* ---------- 3. Soft Scroll Reveal ---------- */
+  var revealTargets = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealTargets.length) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -32,105 +105,33 @@ document.addEventListener('DOMContentLoaded', function () {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
     revealTargets.forEach(function (el) { observer.observe(el); });
   } else {
     revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- 3. Sticky navigation ---------- */
-  var nav = document.querySelector('.site-nav');
-  var hero = document.getElementById('hero');
-
-  if (nav && hero) {
-    var lastScrollY = 0;
-    var heroBottom = 0;
-
-    function updateNav() {
-      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      heroBottom = hero.offsetTop + hero.offsetHeight * 0.4;
-
-      if (scrollY > heroBottom) {
-        nav.classList.add('is-visible');
-        nav.classList.add('is-scrolled');
-      } else {
-        nav.classList.remove('is-visible');
-        nav.classList.remove('is-scrolled');
-      }
-
-      lastScrollY = scrollY;
-    }
-
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-  }
-
-  /* ---------- 4. Live countdown ---------- */
-  var launchDate = new Date();
-  launchDate.setDate(launchDate.getDate() + 30);
-  launchDate.setHours(0, 0, 0, 0);
-
-  var countdownEls = {
-    days: document.getElementById('countDays'),
-    hours: document.getElementById('countHours'),
-    minutes: document.getElementById('countMinutes'),
-    seconds: document.getElementById('countSeconds')
-  };
-
-  function updateCountdown() {
-    var now = new Date().getTime();
-    var distance = launchDate.getTime() - now;
-
-    if (distance <= 0) {
-      Object.keys(countdownEls).forEach(function (key) {
-        if (countdownEls[key]) countdownEls[key].textContent = '00';
+  /* ---------- 4. FAQ Accordion ---------- */
+  var accordions = document.querySelectorAll('.accordion-item');
+  accordions.forEach(function(acc) {
+    var header = acc.querySelector('.accordion-header');
+    header.addEventListener('click', function() {
+      var isActive = acc.classList.contains('is-active');
+      
+      // Close all others
+      accordions.forEach(function(other) {
+        other.classList.remove('is-active');
       });
-      return;
-    }
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-    function updateUnit(el, value) {
-      if (!el) return;
-      var padded = pad(value);
-      if (el.textContent !== padded) {
-        el.textContent = padded;
-        el.classList.remove('tick');
-        void el.offsetWidth;
-        el.classList.add('tick');
+      // Toggle current
+      if (!isActive) {
+        acc.classList.add('is-active');
       }
-    }
+    });
+  });
 
-    updateUnit(countdownEls.days, days);
-    updateUnit(countdownEls.hours, hours);
-    updateUnit(countdownEls.minutes, minutes);
-    updateUnit(countdownEls.seconds, seconds);
-  }
-
-  if (countdownEls.days) {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  }
-
-  /* ---------- 5. Scroll progress ---------- */
-  var progressBar = document.querySelector('.scroll-progress');
-
-  if (progressBar) {
-    window.addEventListener('scroll', function () {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + '%';
-    }, { passive: true });
-  }
-
-  /* ---------- 6. Notify Me form ---------- */
+  /* ---------- 5. Waitlist Form ---------- */
   var notifyForm = document.getElementById('notifyForm');
   var notifyNote = document.getElementById('notifyNote');
 
@@ -142,64 +143,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (!email) {
         notifyNote.textContent = 'Please enter a valid email address.';
-        notifyNote.classList.remove('success');
         return;
       }
 
-      notifyNote.textContent = "\u2713 Thank you! We'll let you know as soon as we launch.";
-      notifyNote.classList.add('success');
+      notifyNote.textContent = 'Thank you! You have been added to our waitlist.';
       notifyForm.reset();
     });
   }
-
-  /* ---------- 7. Mouse parallax on hero ---------- */
-  var heroContent = document.querySelector('.hero__content');
-  var heroDecor = document.querySelector('.hero__decor');
-
-  if (heroContent && heroDecor && window.matchMedia('(min-width: 768px)').matches) {
-    document.addEventListener('mousemove', function (e) {
-      var x = (e.clientX / window.innerWidth - 0.5) * 2;
-      var y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-      requestAnimationFrame(function () {
-        heroDecor.style.transform = 'translate(' + (x * 8) + 'px, ' + (y * 6) + 'px)';
-      });
-    });
-  }
-
-  /* ---------- 8. Mobile navigation ---------- */
-  var navToggle = document.querySelector('.site-nav__toggle');
-  var navLinks = document.querySelector('.site-nav__links');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      navToggle.classList.toggle('is-active');
-      navLinks.classList.toggle('is-open');
-      document.body.style.overflow = navLinks.classList.contains('is-open') ? 'hidden' : '';
-    });
-
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navToggle.classList.remove('is-active');
-        navLinks.classList.remove('is-open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  /* ---------- 9. Smooth scroll for anchor links ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      var target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        var navHeight = nav ? nav.offsetHeight : 0;
-        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    });
-  });
-
 });

@@ -3,547 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ================= SEO ================= -->
-  <title>Aru – অরু | Women's Jewelry & Fashion Accessories in Bangladesh</title>
-  <meta name="description" content="Aru – অরু is a boutique jewelry and fashion accessories brand in Bangladesh. Discover elegant rings, earrings, necklaces and accessories crafted for everyday grace. Launching soon." />
-  <meta name="keywords" content="Aru, অরু, jewelry Bangladesh, fashion accessories, women's jewelry, rings, earrings, necklaces, boutique jewelry BD, rose gold jewelry" />
-  <meta name="author" content="Aru – অরু" />
-  <link rel="canonical" href="https://helloarubd.github.io/helloarubd/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aru – অরু | Where Elegance Meets Everyday" />
-  <meta property="og:description" content="Elegance in every detail. Discover Aru's upcoming collection of rings, earrings, necklaces and accessories crafted for the women of Bangladesh." />
-  <meta property="og:image" content="assets/images/og-cover.jpg" />
-  <meta property="og:url" content="https://helloarubd.github.io/helloarubd/" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aru – অরু | Where Elegance Meets Everyday" />
-  <meta name="twitter:description" content="Elegance in every detail. Coming soon from Aru – অরু." />
-  <meta name="twitter:image" content="assets/images/og-cover.jpg" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-
+  <title>Aru – অরু | Everyday Elegance</title>
+  <meta name="description" content="Aru – অরু is a boutique jewelry and fashion accessories brand in Bangladesh. Discover elegant rings, earrings, necklaces and accessories crafted for everyday grace." />
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="pleasant-theme">
 
-  <!-- ============================================================
-       SCROLL PROGRESS BAR
-  ============================================================= -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       PAGE LOADER
-  ============================================================= -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <svg class="loader__ring" viewBox="0 0 120 120">
-      <circle class="loader__ring-track" cx="60" cy="60" r="42" />
-      <circle class="loader__ring-progress" cx="60" cy="60" r="42" />
-      <circle class="loader__gem" cx="60" cy="18" r="5" />
-    </svg>
-    <span class="loader__label">Aru</span>
-  </div>
-
-  <!-- ============================================================
-       AMBIENT BACKGROUND
-  ============================================================= -->
-  <div class="ambient" aria-hidden="true">
-    <svg class="ambient__item ambient__item--1" viewBox="0 0 60 60"><path d="M30 6 L34 26 L54 30 L34 34 L30 54 L26 34 L6 30 L26 26 Z" /></svg>
-    <svg class="ambient__item ambient__item--2" viewBox="0 0 60 60"><circle cx="30" cy="30" r="14" /><circle cx="30" cy="30" r="3" /></svg>
-    <svg class="ambient__item ambient__item--3" viewBox="0 0 60 60"><path d="M30 4 C42 4 50 14 50 26 C50 40 30 54 30 54 C30 54 10 40 10 26 C10 14 18 4 30 4 Z" /></svg>
-    <svg class="ambient__item ambient__item--4" viewBox="0 0 60 60"><path d="M30 6 L34 26 L54 30 L34 34 L30 54 L26 34 L6 30 L26 26 Z" /></svg>
-    <svg class="ambient__item ambient__item--5" viewBox="0 0 60 60"><circle cx="30" cy="30" r="10" /></svg>
-  </div>
-
-  <!-- ============================================================
-       STICKY NAVIGATION (glassmorphism, appears on scroll)
-  ============================================================= -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a href="#hero" class="site-nav__brand">
-        <span class="site-nav__brand-en">Aru</span>
-        <span class="site-nav__brand-bn">অরু</span>
-      </a>
-      <ul class="site-nav__links">
-        <li><a href="#categories">Collections</a></li>
-        <li><a href="#lookbook">Lookbook</a></li>
-        <li><a href="#why-us">Why Aru</a></li>
-        <li><a href="#about">Our Story</a></li>
-        <li><a href="#social">Contact</a></li>
+  <!-- Glassmorphism Navigation -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="#hero" class="brand-logo">Aru <span>অরু</span></a>
+      <ul class="nav-links">
+        <li><a href="#philosophy">Our Story</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#style-guide">Style Guide</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
-      <button class="site-nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a href="#waitlist" class="btn btn-outline">Join Waitlist</a>
+      </div>
     </div>
   </nav>
 
-  <!-- ============================================================
-       HEADER / BRAND MARK
-  ============================================================= -->
-  <header class="site-header" data-reveal>
-    <div class="site-header__mark">
-      <span class="site-header__en">Aru</span>
-      <span class="site-header__bn">অরু</span>
-    </div>
-  </header>
-
   <main>
-
-    <!-- ============================================================
-         HERO SECTION
-    ============================================================= -->
+    <!-- 1. Hero Section -->
     <section class="hero" id="hero">
-      <div class="hero__decor" aria-hidden="true">
-        <!-- fine line-art leaf, left -->
-        <svg class="hero__leaf hero__leaf--left" viewBox="0 0 120 300" fill="none">
-          <path d="M60 10 C90 60 95 140 60 200 C25 140 30 60 60 10Z" />
-          <path d="M60 30 L60 190" />
-        </svg>
-        <!-- fine line-art leaf, right -->
-        <svg class="hero__leaf hero__leaf--right" viewBox="0 0 120 300" fill="none">
-          <path d="M60 10 C90 60 95 140 60 200 C25 140 30 60 60 10Z" />
-          <path d="M60 30 L60 190" />
-        </svg>
-        <!-- sparkles -->
-        <svg class="hero__sparkle hero__sparkle--1" viewBox="0 0 40 40"><path d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z" /></svg>
-        <svg class="hero__sparkle hero__sparkle--2" viewBox="0 0 40 40"><path d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z" /></svg>
-        <svg class="hero__sparkle hero__sparkle--3" viewBox="0 0 40 40"><path d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z" /></svg>
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1" data-speed="0.2"></div>
+        <div class="shape shape-2" data-speed="-0.3"></div>
+      </div>
+      
+      <!-- Floating Images for Visual Interest -->
+      <div class="hero-float hero-float-left" data-speed="0.15">
+        <div class="image-frame organic-shape-4">
+          <img src="assets/images/lookbook-necklace.jpg" alt="" />
+        </div>
+      </div>
+      <div class="hero-float hero-float-right" data-speed="-0.1">
+        <div class="image-frame organic-shape-2">
+          <img src="assets/images/lookbook-rings.jpg" alt="" />
+        </div>
       </div>
 
-      <div class="hero__content">
-        <p class="hero__eyebrow" data-reveal>Jewelry &amp; Fashion Accessories</p>
-
-        <div class="hero__logo" data-reveal>
-          <h1 class="hero__logo-en">Aru</h1>
-          <span class="hero__logo-bn">অরু</span>
-        </div>
-
-        <!-- Signature element: self-drawing pendant necklace -->
-        <svg class="hero__signature" viewBox="0 0 320 160" aria-hidden="true">
-          <path class="hero__signature-path"
-            d="M20 20 C 60 90, 120 110, 160 112 C 200 110, 260 90, 300 20"
-          />
-          <path class="hero__signature-pendant"
-            d="M160 112 L160 132 M148 140 C148 150 172 150 172 140 C172 130 148 130 148 140 Z"
-          />
-          <circle class="hero__signature-gem" cx="160" cy="141" r="3.4" />
-        </svg>
-
-        <h2 class="hero__headline" data-reveal>Where Elegance Meets Everyday</h2>
-
-        <p class="hero__description" data-reveal>
-          Thoughtfully chosen rings, earrings, necklaces and accessories
-          designed for the women of Bangladesh who believe beauty lives
-          in the little details.
+      <div class="hero-content">
+        <h1 class="hero-title" data-reveal><em>Elevate</em><br>your everyday.</h1>
+        <p class="hero-subtitle" data-reveal data-reveal-delay="1">
+          Thoughtfully crafted jewelry and accessories designed for the modern women of Bangladesh. Because elegance shouldn't be reserved for special occasions.
         </p>
-
-        <div class="hero__actions" data-reveal>
-          <a href="#notify" class="btn btn--primary">
-            <span>Explore Collection</span>
-          </a>
-          <a href="#social" class="btn btn--ghost">
-            <span>Follow Us</span>
-          </a>
+        <div class="hero-actions" data-reveal data-reveal-delay="2">
+          <a href="#collections" class="btn btn-primary">Discover the Pieces</a>
         </div>
-
-        <ul class="hero__highlights" data-reveal>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 L10 17 L19 7"/></svg>Handpicked Designs</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 L10 17 L19 7"/></svg>Gift-Ready Packaging</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 L10 17 L19 7"/></svg>Delivery All Over Bangladesh</li>
-        </ul>
       </div>
-
-      <div class="hero__scroll-cue" aria-hidden="true">
-        <span></span>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-cue">
+        <div class="scroll-cue-line"></div>
+        <span>Scroll</span>
       </div>
     </section>
 
-    <!-- ============================================================
-         TRUST / PROMISE STRIP
-    ============================================================= -->
-    <section class="promise-strip" aria-label="Our promise">
-      <div class="promise-strip__inner">
-        <div class="promise-strip__item" data-reveal>
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 L27 8 L27 16 C27 23 22 27 16 29 C10 27 5 23 5 16 L5 8 Z"/><path d="M11 16 L15 20 L21 12"/></svg>
-          <span>Authentic Materials</span>
-        </div>
-        <div class="promise-strip__item" data-reveal data-reveal-delay="1">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="12" width="20" height="16" rx="2"/><path d="M6 18 L26 18"/><path d="M12 12 L12 8 C12 5 14 3 16 3 C18 3 20 5 20 8 L20 12"/></svg>
-          <span>Boutique Packaging</span>
-        </div>
-        <div class="promise-strip__item" data-reveal data-reveal-delay="2">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9 L16 16 L21 19"/></svg>
-          <span>Everyday Affordable Prices</span>
-        </div>
-        <div class="promise-strip__item" data-reveal data-reveal-delay="3">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 20 L16 20 L16 10 L9 10 L4 15 Z"/><circle cx="10" cy="24" r="3"/><circle cx="22" cy="24" r="3"/><path d="M16 14 L24 14 L28 20 L16 20"/></svg>
-          <span>Nationwide Delivery</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- section separator -->
-    <div class="divider" aria-hidden="true"><span></span></div>
-
-    <!-- ============================================================
-         COMING SOON SECTION
-    ============================================================= -->
-    <section class="coming-soon" id="notify">
-      <div class="coming-soon__card" data-reveal>
-        <svg class="coming-soon__icon" viewBox="0 0 60 60" aria-hidden="true">
-          <circle cx="30" cy="24" r="16" />
-          <path d="M18 40 C18 34 42 34 42 40 L44 54 L16 54 Z" />
-        </svg>
-
-        <h3 class="coming-soon__title">We are preparing something beautiful.</h3>
-        <p class="coming-soon__text">
-          Our debut collection is almost ready. Follow our Facebook and
-          Instagram pages to be the first to discover it.
-        </p>
-
-        <!-- Live countdown -->
-        <div class="countdown" role="group" aria-label="Launch countdown">
-          <div class="countdown__unit">
-            <span class="countdown__value" id="countDays">30</span>
-            <span class="countdown__label">Days</span>
+    <!-- 2. The Philosophy / Founder's Note -->
+    <section class="philosophy" id="philosophy">
+      <div class="container">
+        <div class="philosophy-grid">
+          <div class="philosophy-image">
+            <div class="image-frame organic-shape-1">
+              <img src="assets/images/about-workspace.jpg" alt="Aru Workspace" loading="lazy" />
+            </div>
           </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <span class="countdown__value" id="countHours">00</span>
-            <span class="countdown__label">Hours</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <span class="countdown__value" id="countMinutes">00</span>
-            <span class="countdown__label">Minutes</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__unit">
-            <span class="countdown__value" id="countSeconds">00</span>
-            <span class="countdown__label">Seconds</span>
-          </div>
-        </div>
-
-        <!-- Notify Me form -->
-        <form class="notify-form" id="notifyForm">
-          <label class="notify-form__label" for="notifyEmail">Get notified at launch</label>
-          <div class="notify-form__row">
-            <input
-              type="email"
-              id="notifyEmail"
-              class="notify-form__input"
-              placeholder="Enter your email address"
-              required
-            />
-            <button type="submit" class="btn btn--primary notify-form__submit">
-              <span>Notify Me</span>
-            </button>
-          </div>
-          <p class="notify-form__note" id="notifyNote" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-
-    <!-- Wave transition -->
-    <div class="wave-divider wave-divider--cream" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" />
-      </svg>
-    </div>
-
-    <!-- ============================================================
-         FEATURED CATEGORIES
-    ============================================================= -->
-    <section class="categories" id="categories">
-      <h3 class="section-heading" data-reveal>Featured Collections</h3>
-      <p class="section-subheading" data-reveal>
-        A first look at the four collections we're curating for you —
-        each one built around pieces you'll actually reach for every day.
-      </p>
-
-      <div class="categories__grid">
-        <article class="cat-card" data-reveal>
-          <div class="cat-card__image">
-            <img src="assets/images/category-rings.jpg" alt="Elegant gold and rose gold rings on cream silk" loading="lazy" />
-          </div>
-          <div class="cat-card__body">
-            <span class="cat-card__tag">Collection 01</span>
-            <h4 class="cat-card__title">Rings</h4>
-            <p class="cat-card__text">
-              Delicate bands, stackable sets and statement solitaires —
-              designed to sit comfortably from morning coffee to evening plans.
+          <div class="philosophy-text" data-reveal data-reveal-delay="1">
+            <span class="eyebrow">A Note from the Founder</span>
+            <h2>We believe beauty lives in the little details.</h2>
+            <p>
+              I started Aru – অরু with a simple question: why do we keep our most beautiful things locked away in a box, waiting for the "right" moment to wear them?
             </p>
-          </div>
-        </article>
-
-        <article class="cat-card" data-reveal data-reveal-delay="1">
-          <div class="cat-card__image">
-            <img src="assets/images/category-earrings.jpg" alt="Rose gold drop earrings on marble surface" loading="lazy" />
-          </div>
-          <div class="cat-card__body">
-            <span class="cat-card__tag">Collection 02</span>
-            <h4 class="cat-card__title">Earrings</h4>
-            <p class="cat-card__text">
-              Statement drops for special occasions and soft everyday studs
-              that catch the light without ever feeling heavy.
+            <p>
+              Our pieces are curated and crafted not for the vault, but for your skin. They are designed to accompany you through morning coffees, long workdays, and evening laughter. Every piece is hypoallergenic, durable, and crafted to hold its shine through the beautiful chaos of daily life.
             </p>
+            <div class="signature">
+              <p>With love,</p>
+              <p class="sig-name">The Aru Team</p>
+            </div>
           </div>
-        </article>
-
-        <article class="cat-card" data-reveal data-reveal-delay="2">
-          <div class="cat-card__image">
-            <img src="assets/images/category-necklaces.jpg" alt="Layered gold pendant necklaces on velvet display" loading="lazy" />
-          </div>
-          <div class="cat-card__body">
-            <span class="cat-card__tag">Collection 03</span>
-            <h4 class="cat-card__title">Necklaces</h4>
-            <p class="cat-card__text">
-              Layered chains, dainty pendants and bolder chokers — pieces
-              meant to be mixed, stacked, and made your own.
-            </p>
-          </div>
-        </article>
-
-        <article class="cat-card" data-reveal data-reveal-delay="3">
-          <div class="cat-card__image">
-            <img src="assets/images/category-accessories.jpg" alt="Hair pins, bracelets and fashion accessories" loading="lazy" />
-          </div>
-          <div class="cat-card__body">
-            <span class="cat-card__tag">Collection 04</span>
-            <h4 class="cat-card__title">Accessories</h4>
-            <p class="cat-card__text">
-              Hair pins, bracelets, anklets and the small finishing touches
-              that quietly complete an outfit.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <div class="divider" aria-hidden="true"><span></span></div>
-
-    <!-- ============================================================
-         LOOKBOOK / SNEAK PEEK
-    ============================================================= -->
-    <section class="lookbook" id="lookbook">
-      <h3 class="section-heading" data-reveal>A Sneak Peek Into the Studio</h3>
-      <p class="section-subheading" data-reveal>
-        Our first collection is being designed, sourced and packed right now
-        — here's a glimpse of the mood we're building toward.
-      </p>
-
-      <div class="lookbook__grid">
-        <figure class="lookbook__panel" data-reveal>
-          <img src="assets/images/lookbook-earrings.jpg" alt="Rose gold drop earrings being crafted" loading="lazy" />
-          <figcaption>
-            <span class="lookbook__label">In the making</span>
-            <span class="lookbook__caption">Rose gold drop earrings</span>
-          </figcaption>
-        </figure>
-        <figure class="lookbook__panel" data-reveal data-reveal-delay="1">
-          <img src="assets/images/lookbook-necklace.jpg" alt="Gold pendant necklace on linen" loading="lazy" />
-          <figcaption>
-            <span class="lookbook__label">Coming soon</span>
-            <span class="lookbook__caption">Layered pendant necklace</span>
-          </figcaption>
-        </figure>
-        <figure class="lookbook__panel" data-reveal data-reveal-delay="2">
-          <img src="assets/images/lookbook-rings.jpg" alt="Gold stacking rings on fingers" loading="lazy" />
-          <figcaption>
-            <span class="lookbook__label">Sneak peek</span>
-            <span class="lookbook__caption">Soft gold stacking rings</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Wave transition -->
-    <div class="wave-divider wave-divider--sand" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" />
-      </svg>
-    </div>
-
-    <!-- ============================================================
-         WHY CHOOSE ARU
-    ============================================================= -->
-    <section class="why-us" id="why-us">
-      <h3 class="section-heading" data-reveal>Why Choose Aru</h3>
-      <p class="section-subheading" data-reveal>
-        We're building Aru around four promises we won't cut corners on —
-        whether it's your first piece from us or your fifteenth.
-      </p>
-
-      <div class="why-us__grid">
-        <article class="feature-card" data-reveal>
-          <span class="feature-card__icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L40 16 L40 32 L24 42 L8 32 L8 16 Z" /><path d="M8 16 L24 26 L40 16 M24 26 L24 42" /></svg>
-          </span>
-          <h4 class="feature-card__title">Premium Quality</h4>
-          <p class="feature-card__text">
-            Carefully chosen materials, finished to hold their shine and
-            colour well beyond a single season of wear.
-          </p>
-        </article>
-
-        <article class="feature-card" data-reveal data-reveal-delay="1">
-          <span class="feature-card__icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="16" width="30" height="24" rx="3" /><path d="M9 24 L39 24" /><path d="M18 16 L18 10 C18 8 20 6 24 6 C28 6 30 8 30 10 L30 16" /></svg>
-          </span>
-          <h4 class="feature-card__title">Beautiful Packaging</h4>
-          <p class="feature-card__text">
-            Every piece arrives in a box designed to feel like a gift, even
-            when you're treating yourself.
-          </p>
-        </article>
-
-        <article class="feature-card" data-reveal data-reveal-delay="2">
-          <span class="feature-card__icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" /><path d="M24 15 L24 24 L30 29" /></svg>
-          </span>
-          <h4 class="feature-card__title">Affordable Luxury</h4>
-          <p class="feature-card__text">
-            Prices built for everyday indulgence — elegance you can reach for
-            without waiting for a special occasion.
-          </p>
-        </article>
-
-        <article class="feature-card" data-reveal data-reveal-delay="3">
-          <span class="feature-card__icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 28 L26 28 L26 14 L14 14 L6 22 Z" /><circle cx="15" cy="34" r="4" /><circle cx="33" cy="34" r="4" /><path d="M26 20 L36 20 L42 28 L26 28" /></svg>
-          </span>
-          <h4 class="feature-card__title">Fast Delivery</h4>
-          <p class="feature-card__text">
-            From Dhaka to every district — packed securely and sent on its way
-            quickly, so the wait is part of the excitement.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Wave transition -->
-    <div class="wave-divider wave-divider--cream" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" />
-      </svg>
-    </div>
-
-    <!-- ============================================================
-         ABOUT BRAND
-    ============================================================= -->
-    <section class="about" id="about">
-      <div class="about__grid">
-        <div class="about__visual" data-reveal>
-          <img src="assets/images/about-workspace.jpg" alt="Aru jewelry design workspace with tools and gold chains" loading="lazy" />
-          <div class="about__visual-overlay"></div>
-        </div>
-
-        <div class="about__copy" data-reveal>
-          <p class="hero__eyebrow about__eyebrow">Our Story</p>
-          <h3 class="about__heading">Little details, worn every day</h3>
-          <p class="about__text">
-            At <strong>Aru – অরু</strong>, we believe beauty lives in the
-            little details. Our carefully selected jewelry and fashion
-            accessories are designed to add elegance, confidence, and charm to
-            your everyday style — not just your special occasions.
-          </p>
-          <p class="about__text about__text--secondary">
-            We're a small Bangladesh-based studio, and every piece we choose
-            to carry is picked with one question in mind: would we wear this
-            ourselves, every single day? If the answer isn't yes, it doesn't
-            make it into the collection.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- Wave transition -->
-    <div class="wave-divider wave-divider--sand" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" />
-      </svg>
-    </div>
+    <!-- 3. The Collections -->
+    <section class="collections" id="collections">
+      <div class="container">
+        <div class="section-header center" data-reveal>
+          <span class="eyebrow">The Debut</span>
+          <h2>Our Collections</h2>
+        </div>
 
-    <!-- ============================================================
-         SOCIAL SECTION
-    ============================================================= -->
-    <section class="social" id="social">
-      <h3 class="section-heading" data-reveal>Stay Close to Aru</h3>
-      <p class="section-subheading" data-reveal>
-        Be the first to know when we launch. We'll be sharing behind-the-scenes
-        looks, restock news and the occasional surprise offer on our pages.
-      </p>
+        <div class="collections-grid">
+          <div class="collection-card" data-reveal>
+            <div class="card-image organic-shape-2">
+              <img src="assets/images/category-rings.jpg" alt="Rings" loading="lazy" />
+            </div>
+            <div class="card-content">
+              <h3>Rings</h3>
+              <p>From delicate bands meant to be stacked, to statement solitaires that catch the light perfectly.</p>
+            </div>
+          </div>
 
-      <div class="social__grid" data-reveal>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/helloaru.bd/" class="social-card" aria-label="Follow Aru on Facebook" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
-          <span class="social-card__title">Facebook</span>
-          <span class="social-card__meta">Follow for launch updates</span>
-        </a>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/helloaru.bd/" class="social-card" aria-label="Follow Aru on Instagram" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1"/></svg>
-          <span class="social-card__title">Instagram</span>
-          <span class="social-card__meta">Behind-the-scenes &amp; new drops</span>
-        </a>
-        <!-- Email -->
-        <a href="mailto:helloaru.bd@gmail.com" class="social-card" aria-label="Email Aru">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6 L12 13 L21 6"/></svg>
-          <span class="social-card__title">helloaru.bd@gmail.com</span>
-          <span class="social-card__meta">For questions &amp; collaborations</span>
-        </a>
+          <div class="collection-card" data-reveal data-reveal-delay="1">
+            <div class="card-image organic-shape-3">
+              <img src="assets/images/category-earrings.jpg" alt="Earrings" loading="lazy" />
+            </div>
+            <div class="card-content">
+              <h3>Earrings</h3>
+              <p>Soft everyday studs and elegant drops that frame your face without ever feeling heavy.</p>
+            </div>
+          </div>
+
+          <div class="collection-card" data-reveal data-reveal-delay="2">
+            <div class="card-image organic-shape-4">
+              <img src="assets/images/category-necklaces.jpg" alt="Necklaces" loading="lazy" />
+            </div>
+            <div class="card-content">
+              <h3>Necklaces</h3>
+              <p>Layered chains and dainty pendants meant to be mixed, matched, and made your own.</p>
+            </div>
+          </div>
+
+          <div class="collection-card" data-reveal data-reveal-delay="3">
+            <div class="card-image organic-shape-5">
+              <img src="assets/images/category-accessories.jpg" alt="Accessories" loading="lazy" />
+            </div>
+            <div class="card-content">
+              <h3>Accessories</h3>
+              <p>Hair pins, bracelets, and the small finishing touches that quietly complete an outfit.</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <p class="social__hashtag" data-reveal>Tag <strong>#ArubyBD</strong> — we'd love to see how you style it.</p>
+    <!-- 4. Craftsmanship & Materials -->
+    <section class="craftsmanship">
+      <div class="container">
+        <div class="craft-grid">
+          <div class="craft-item" data-reveal>
+            <div class="craft-icon">✦</div>
+            <h4>Hypoallergenic</h4>
+            <p>Gentle on sensitive skin, so you can wear them comfortably all day.</p>
+          </div>
+          <div class="craft-item" data-reveal data-reveal-delay="1">
+            <div class="craft-icon">✧</div>
+            <h4>Premium Finish</h4>
+            <p>High-quality plating designed to resist tarnishing and keep its warm glow.</p>
+          </div>
+          <div class="craft-item" data-reveal data-reveal-delay="2">
+            <div class="craft-icon">✿</div>
+            <h4>Eco-Friendly Packaging</h4>
+            <p>Every order arrives in beautiful, reusable pouches and recyclable boxes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Style Guide -->
+    <section class="style-guide" id="style-guide">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow">How to Wear</span>
+          <h2>The Style Guide</h2>
+          <p class="subtitle">There are no rules, but here is how we love to style our pieces.</p>
+        </div>
+
+        <div class="style-grid">
+          <div class="style-feature">
+            <div class="style-image">
+              <img src="assets/images/lookbook-necklace.jpg" alt="Layering Necklaces" loading="lazy" />
+            </div>
+            <div class="style-text" data-reveal data-reveal-delay="1">
+              <h3>The Art of Layering</h3>
+              <p>Start with a delicate choker, add a mid-length chain, and finish with a statement pendant. Mixing textures (like a snake chain with a cable chain) adds effortless depth.</p>
+            </div>
+          </div>
+          
+          <div class="style-feature reverse">
+            <div class="style-image">
+              <img src="assets/images/lookbook-rings.jpg" alt="Stacking Rings" loading="lazy" />
+            </div>
+            <div class="style-text" data-reveal data-reveal-delay="1">
+              <h3>Curated Stacks</h3>
+              <p>Balance is key. Pair a bold, chunky ring on your index finger with two ultra-thin, minimalist bands on your ring finger for a look that feels intentionally undone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ Accordion -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header center" data-reveal>
+          <span class="eyebrow">What to Expect</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="accordion" data-reveal>
+          <div class="accordion-item">
+            <button class="accordion-header">Do you deliver outside of Dhaka?</button>
+            <div class="accordion-content">
+              <p>Yes! We offer nationwide delivery across all of Bangladesh. Delivery within Dhaka usually takes 1-2 days, while outside Dhaka takes 3-5 days.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">How should I care for my Aru jewelry?</button>
+            <div class="accordion-content">
+              <p>To keep your pieces glowing, avoid direct contact with perfumes, lotions, and harsh chemicals. We recommend gently wiping them with a soft cloth after wearing and storing them in the Aru pouch provided.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Is the jewelry suitable for sensitive skin?</button>
+            <div class="accordion-content">
+              <p>Absolutely. All our pieces are crafted to be hypoallergenic, lead-free, and nickel-free, making them safe and comfortable for daily wear.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Waitlist / Anticipation -->
+    <section class="waitlist-pleasant" id="waitlist">
+      <div class="container">
+        <div class="waitlist-box" data-reveal>
+          <h2>The Anticipation</h2>
+          <p>We are putting the final touches on our debut collection. Join the family to receive an exclusive invitation to our early launch, plus styling tips straight to your inbox.</p>
+          
+          <form class="waitlist-form" id="notifyForm">
+            <input type="email" id="notifyEmail" placeholder="Your email address" required />
+            <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+          </form>
+          <div class="form-message" id="notifyNote"></div>
+        </div>
+      </div>
     </section>
 
   </main>
 
-  <!-- ============================================================
-       WAVE TRANSITION TO FOOTER
-  ============================================================= -->
-  <div class="wave-divider wave-divider--dark" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0 60 L0 30 Q360 0 720 30 Q1080 60 1440 30 L1440 60 Z" />
-    </svg>
-  </div>
-
-  <!-- ============================================================
-       FOOTER
-  ============================================================= -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div class="site-footer__top">
-        <div class="site-footer__brand">
-          <div class="site-footer__mark">Aru <span>অরু</span></div>
-          <p class="site-footer__tagline">Elegant jewelry &amp; fashion accessories, crafted with care for the women of Bangladesh.</p>
+  <!-- Footer -->
+  <footer class="pleasant-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>Aru <span>অরু</span></h2>
+          <p>Elevate your everyday.</p>
         </div>
-        <nav class="site-footer__links" aria-label="Footer">
-          <a href="#categories">Collections</a>
-          <a href="#why-us">Why Aru</a>
-          <a href="#about">Our Story</a>
-          <a href="#social">Contact</a>
-        </nav>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="#philosophy">Our Story</a>
+          <a href="#collections">Collections</a>
+          <a href="#style-guide">Style Guide</a>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/helloaru.bd/" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/helloaru.bd/" target="_blank">Facebook</a>
+          <a href="https://wa.me/8801234567890" target="_blank">WhatsApp</a>
+        </div>
       </div>
-      <div class="divider" aria-hidden="true"><span></span></div>
-      <p class="site-footer__copy">© 2026 Aru – অরু · Made with ❤ in Bangladesh</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aru Bangladesh. Crafted with care.</p>
+      </div>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
